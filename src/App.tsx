@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { supabase } from './lib/supabase';
 import { useAuthStore } from './stores/authStore';
+import { useTheme } from './hooks/useTheme'; // Import useTheme to ensure it runs
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Course from './pages/Course';
 
 function App() {
   const { setUser, setLoading, loading } = useAuthStore();
+  useTheme(); // Initialize theme
 
   useEffect(() => {
     // Check active session

@@ -338,8 +338,8 @@ const LessonContent = () => {
           <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg mb-8 border border-blue-100 dark:border-blue-800">
             <p className="text-lg text-blue-800 dark:text-blue-200 font-medium text-center">
               {language === 'en' 
-                ? "To earn your free certificate, you must score 100% on this final exam. Please read each question carefully and select the best answer. Good luck!"
-                : "เพื่อรับใบประกาศนียบัตรฟรี คุณต้องทำคะแนนให้ได้ 100% ในการสอบนี้ กรุณาอ่านคำถามแต่ละข้ออย่างละเอียดและเลือกคำตอบที่ดีที่สุด ขอให้โชคดี!"
+                ? "To earn your free certificate, you must score at least 80% on this final exam. Please read each question carefully and select the best answer. Good luck!"
+                : "เพื่อรับใบประกาศนียบัตรฟรี คุณต้องทำคะแนนให้ได้อย่างน้อย 80% ในการสอบนี้ กรุณาอ่านคำถามแต่ละข้ออย่างละเอียดและเลือกคำตอบที่ดีที่สุด ขอให้โชคดี!"
               }
             </p>
           </div>
@@ -424,6 +424,86 @@ const LessonContent = () => {
                 "ไฟฟ้าที่ AI ใช้ไป"
               ],
               correctAnswer: 1
+            },
+            {
+              id: 6,
+              question: language === 'en' ? "Which of these is NOT a typical use case for AI in everyday life?" : "ข้อใดต่อไปนี้ไม่ใช่กรณีการใช้งานทั่วไปของ AI ในชีวิตประจำวัน?",
+              options: language === 'en' ? [
+                "Voice assistants like Siri or Alexa",
+                "Personalized movie recommendations",
+                "Physical manual labor without machines",
+                "Spam email filtering"
+              ] : [
+                "ผู้ช่วยเสียงเช่น Siri หรือ Alexa",
+                "คำแนะนำภาพยนตร์ส่วนบุคคล",
+                "แรงงานคนโดยไม่ใช้เครื่องจักร",
+                "การกรองอีเมลสแปม"
+              ],
+              correctAnswer: 2
+            },
+            {
+              id: 7,
+              question: language === 'en' ? "What does 'Hallucination' mean in the context of LLMs?" : "คำว่า 'Hallucination' (อาการหลอน) หมายถึงอะไรในบริบทของ LLMs?",
+              options: language === 'en' ? [
+                "The AI becomes conscious",
+                "The AI generates factually incorrect information confidently",
+                "The AI refuses to answer questions",
+                "The AI runs out of memory"
+              ] : [
+                "AI มีความรู้สึกนึกคิด",
+                "AI สร้างข้อมูลที่ไม่ถูกต้องตามความเป็นจริงด้วยความมั่นใจ",
+                "AI ปฏิเสธที่จะตอบคำถาม",
+                "AI หน่วยความจำเต็ม"
+              ],
+              correctAnswer: 1
+            },
+            {
+              id: 8,
+              question: language === 'en' ? "How does AI impact the future of work?" : "AI ส่งผลกระทบต่ออนาคตของการทำงานอย่างไร?",
+              options: language === 'en' ? [
+                "It will replace all human jobs immediately",
+                "It will have no impact on jobs",
+                "It will likely augment human capabilities and automate routine tasks",
+                "It will only affect manual labor jobs"
+              ] : [
+                "มันจะแทนที่งานของมนุษย์ทั้งหมดทันที",
+                "มันจะไม่มีผลกระทบต่องาน",
+                "มันน่าจะช่วยเสริมขีดความสามารถของมนุษย์และทำงานประจำอัตโนมัติ",
+                "มันจะส่งผลกระทบต่องานแรงงานเท่านั้น"
+              ],
+              correctAnswer: 2
+            },
+            {
+              id: 9,
+              question: language === 'en' ? "What is a 'Prompt' in Generative AI?" : "'Prompt' ใน Generative AI คืออะไร?",
+              options: language === 'en' ? [
+                "A computer virus",
+                "The text input or instruction given to the AI model",
+                "The speed of the AI response",
+                "A type of hardware component"
+              ] : [
+                "ไวรัสคอมพิวเตอร์",
+                "ข้อความป้อนเข้าหรือคำสั่งที่มอบให้กับโมเดล AI",
+                "ความเร็วในการตอบสนองของ AI",
+                "ประเภทของชิ้นส่วนฮาร์ดแวร์"
+              ],
+              correctAnswer: 1
+            },
+            {
+              id: 10,
+              question: language === 'en' ? "Why is data quality important for training AI models?" : "ทำไมคุณภาพของข้อมูลจึงสำคัญสำหรับการฝึกโมเดล AI?",
+              options: language === 'en' ? [
+                "It isn't important; any data works",
+                "Only the quantity of data matters",
+                "Poor quality data can lead to inaccurate or biased models (Garbage In, Garbage Out)",
+                "High quality data makes the AI slower"
+              ] : [
+                "ไม่สำคัญ ข้อมูลอะไรก็ได้",
+                "ปริมาณข้อมูลเท่านั้นที่สำคัญ",
+                "ข้อมูลคุณภาพต่ำอาจนำไปสู่โมเดลที่ไม่ถูกต้องหรือมีอคติ (ขยะเข้า ขยะออก)",
+                "ข้อมูลคุณภาพสูงทำให้ AI ช้าลง"
+              ],
+              correctAnswer: 2
             }
           ]} 
             onPass={handleComplete}

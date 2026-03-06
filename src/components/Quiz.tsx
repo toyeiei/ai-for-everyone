@@ -53,7 +53,11 @@ const Quiz: React.FC<QuizProps> = ({ questions, onPass }) => {
     });
     setScore(newScore);
     setSubmitted(true);
-    if (newScore === questions.length && onPass) {
+    // Pass if score is 80% or higher
+    const passThreshold = Math.ceil(questions.length * 0.8);
+    const passed = newScore >= passThreshold;
+    
+    if (passed && onPass) {
         onPass();
     }
   };
@@ -63,6 +67,9 @@ const Quiz: React.FC<QuizProps> = ({ questions, onPass }) => {
     setSubmitted(false);
     setScore(0);
   };
+
+  const passThreshold = Math.ceil(questions.length * 0.8);
+  const passed = score >= passThreshold;
 
   return (
     <div className="space-y-8 my-8">
@@ -108,7 +115,7 @@ const Quiz: React.FC<QuizProps> = ({ questions, onPass }) => {
         </button>
       ) : (
         <div className={`p-6 rounded-xl border-2 text-center ${
-          score === questions.length 
+          passed 
             ? 'border-green-500 bg-green-50 dark:bg-green-900/10' 
             : 'border-red-500 bg-red-50 dark:bg-red-900/10'
         }`}>
@@ -116,12 +123,12 @@ const Quiz: React.FC<QuizProps> = ({ questions, onPass }) => {
             {t.score}: {score} / {questions.length}
           </h2>
           <p className={`text-lg mb-6 ${
-            score === questions.length ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+            passed ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
           }`}>
-            {score === questions.length ? t.passed : t.failed}
+            {passed ? t.passed : t.failed}
           </p>
           
-          {score !== questions.length && (
+          {!passed && (
             <button
               onClick={handleRetry}
               className="px-6 py-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-lg font-medium hover:opacity-90 transition"

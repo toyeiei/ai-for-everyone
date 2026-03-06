@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Download } from 'lucide-react';
 import html2canvas from 'html2canvas';
+import confetti from 'canvas-confetti';
 
 const Certificate = () => {
   const [name, setName] = useState('');
@@ -8,6 +9,39 @@ const Certificate = () => {
   const certificateRef = useRef<HTMLDivElement>(null);
   const [certId] = useState(() => Math.random().toString(36).substring(2, 10).toUpperCase() + Math.random().toString(36).substring(2, 10).toUpperCase());
   const [date] = useState(() => new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+
+  useEffect(() => {
+    if (generated) {
+      const duration = 3000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+      const random = (min: number, max: number) => Math.random() * (max - min) + min;
+
+      const interval = setInterval(() => {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+        
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 }
+        });
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 }
+        });
+      }, 250);
+
+      return () => clearInterval(interval);
+    }
+  }, [generated]);
 
   const handleGenerate = () => {
     if (name.trim()) {
@@ -99,7 +133,7 @@ const Certificate = () => {
                   {name}
                 </div>
                 <p className="text-lg text-zinc-500 max-w-lg mx-auto leading-relaxed">
-                  has successfully completed the comprehensive course on Artificial Intelligence concepts, ethics, and applications.
+                  has successfully completed the introductory course on Artificial Intelligence concepts, ethics, and applications.
                 </p>
               </div>
 
