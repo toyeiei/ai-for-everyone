@@ -5,6 +5,7 @@ import { BookOpen, CheckCircle, Lock } from 'lucide-react';
 import { clsx } from 'clsx';
 import { useAuthStore } from '../stores/authStore';
 import { useLanguageStore } from '../stores/languageStore';
+import type { RealtimeChannel } from '@supabase/supabase-js';
 
 interface Lesson {
   id: string;
@@ -94,7 +95,7 @@ const Sidebar = () => {
     fetchProgress();
     
     // Subscribe to progress changes if user is logged in
-    let subscription: any = null;
+    let subscription: RealtimeChannel | null = null;
     
     if (user) {
         subscription = supabase

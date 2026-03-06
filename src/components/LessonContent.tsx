@@ -262,7 +262,7 @@ const LessonContent = () => {
           videoId = urlObj.pathname.slice(1);
       }
       return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
-    } catch (e) {
+    } catch {
       return null;
     }
   };
@@ -317,16 +317,16 @@ const LessonContent = () => {
         <ReactMarkdown 
           remarkPlugins={[remarkGfm]}
           components={{
-            h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4 text-zinc-900 dark:text-zinc-100" {...props} />,
-            h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-6 mb-3 text-zinc-900 dark:text-zinc-100" {...props} />,
-            h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-4 mb-2 text-zinc-900 dark:text-zinc-100" {...props} />,
-            p: ({node, ...props}) => <p className="my-4 leading-relaxed" {...props} />,
-            ul: ({node, ...props}) => <ul className="list-disc ml-6 my-4 space-y-2" {...props} />,
-            ol: ({node, ...props}) => <ol className="list-decimal ml-6 my-4 space-y-2" {...props} />,
-            li: ({node, ...props}) => <li {...props} />,
-            code: ({node, ...props}) => <code className="bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded text-sm font-mono" {...props} />,
-            pre: ({node, ...props}) => <pre className="bg-zinc-100 dark:bg-zinc-800 p-4 rounded-lg overflow-x-auto my-4 font-mono text-sm" {...props} />,
-            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-zinc-200 dark:border-zinc-700 pl-4 italic my-4" {...props} />,
+            h1: (props) => <h1 className="text-3xl font-bold mt-8 mb-4 text-zinc-900 dark:text-zinc-100" {...props} />,
+            h2: (props) => <h2 className="text-2xl font-bold mt-6 mb-3 text-zinc-900 dark:text-zinc-100" {...props} />,
+            h3: (props) => <h3 className="text-xl font-bold mt-4 mb-2 text-zinc-900 dark:text-zinc-100" {...props} />,
+            p: (props) => <p className="my-4 leading-relaxed" {...props} />,
+            ul: (props) => <ul className="list-disc ml-6 my-4 space-y-2" {...props} />,
+            ol: (props) => <ol className="list-decimal ml-6 my-4 space-y-2" {...props} />,
+            li: (props) => <li {...props} />,
+            code: (props) => <code className="bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded text-sm font-mono" {...props} />,
+            pre: (props) => <pre className="bg-zinc-100 dark:bg-zinc-800 p-4 rounded-lg overflow-x-auto my-4 font-mono text-sm" {...props} />,
+            blockquote: (props) => <blockquote className="border-l-4 border-zinc-200 dark:border-zinc-700 pl-4 italic my-4" {...props} />,
           }}
         >
           {getTranslatedBody(lesson.title, lesson.title === 'Final Exam' || lesson.title === 'Certificate' ? '' : lesson.content)}

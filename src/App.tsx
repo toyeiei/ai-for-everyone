@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { supabase } from './lib/supabase';
 import { useAuthStore } from './stores/authStore';
 import Home from './pages/Home';
@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Course from './pages/Course';
 
 function App() {
-  const { setUser, setLoading, user, loading } = useAuthStore();
+  const { setUser, setLoading, loading } = useAuthStore();
 
   useEffect(() => {
     // Check active session
