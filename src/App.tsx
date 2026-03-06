@@ -40,8 +40,8 @@ function App() {
       <div className="min-h-screen bg-zinc-900 text-zinc-100">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={!user ? <Login /> : <Navigate to="/course" />} />
-          <Route path="/course/*" element={user ? <Course /> : <Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/course/*" element={<Course />} />
         </Routes>
       </div>
     </Router>

@@ -7,7 +7,11 @@ export default {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"Noto Sans"', '"Noto Sans Thai"', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
