@@ -24,14 +24,14 @@ const Quiz: React.FC<QuizProps> = ({ questions, onPass }) => {
       submit: 'Submit Exam',
       score: 'Your Score',
       passed: 'Congratulations! You passed the exam.',
-      failed: 'You did not pass. You need 5/5 to earn a certificate. Please try again.',
+      failed: 'You did not pass. You need at least 80% to earn a certificate. Please try again.',
       retry: 'Try Again'
     },
     th: {
       submit: 'ส่งข้อสอบ',
       score: 'คะแนนของคุณ',
       passed: 'ยินดีด้วย! คุณสอบผ่านแล้ว',
-      failed: 'คุณสอบไม่ผ่าน คุณต้องได้คะแนน 5/5 เพื่อรับใบประกาศนียบัตร กรุณาลองใหม่อีกครั้ง',
+      failed: 'คุณสอบไม่ผ่าน คุณต้องได้คะแนนอย่างน้อย 80% เพื่อรับใบประกาศนียบัตร กรุณาลองใหม่อีกครั้ง',
       retry: 'ลองอีกครั้ง'
     }
   }[language];
